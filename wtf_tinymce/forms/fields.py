@@ -12,7 +12,7 @@ SANITIZE_TAGS = [
 ]
 SANITIZE_ATTRIBUTES = {'a': ['href', 'title', 'target']}
 
-DEFAULT_TOOLBAR = "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | " \
+DEFAULT_TOOLBAR = "undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | " \
                   "bullist numlist outdent indent | link image | charmap code"
 
 
@@ -57,18 +57,15 @@ class TinyMceField(TextAreaField):
             tinymce_options = dict(tinymce_options)
 
         # Set defaults for TinyMCE
-        tinymce_options.setdefault('plugins', "autolink link lists paste searchreplace code")
+        tinymce_options.setdefault('plugins', "autolink link lists paste searchreplace code table image")
         tinymce_options.setdefault('toolbar', DEFAULT_TOOLBAR)
         tinymce_options.setdefault('width', "100%")
         tinymce_options.setdefault('height', "400")
         tinymce_options.setdefault('min_height', "100")
-        # tinymce_options.setdefault(
-        #     'valid_elements',
-        #     "p,br,strong/b,em/i,sup,sub,h3,h4,h5,h6,ul,ol,li,a[!href|title|target],blockquote,code"
-        # )
         tinymce_options.setdefault('statusbar', False)
         tinymce_options.setdefault('menubar', False)
         tinymce_options.setdefault('resize', True)
+        tinymce_options.setdefault('promotion', False)  # Remove TinyMCE branding
 
         # Remove options that cannot be set by callers
         tinymce_options.pop('content_css', None)
