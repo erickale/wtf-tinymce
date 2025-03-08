@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wtf-tinymce"
+dynamic = ["version"]
+description = "TinyMCE editor extension for WTForms"
+readme = "README.rst"
+authors = [
+    {name = "Alexander Zhygailo", email = "alexander777vz@gmail.com"}
+]
+license = {text = "GNU General Public License v3 (GPLv3)"}
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Development Status :: 5 - Production/Stable",
+    "Topic :: Software Development :: Libraries",
+]
+keywords = ["wtf-tinymce", "wtforms", "tinymce", "richeditor"]
+dependencies = [
+    "bleach>=5.0.0",
+    "WTForms>=2.0",
+    "Flask>=2.0.0",
+    "Flask-WTF>=1.0.0",
+]
+requires-python = ">=3.7"
+
+[project.urls]
+Homepage = "https://github.com/azsoftware/wtf-tinymce"
+
+[tool.setuptools]
+packages = ["wtf_tinymce"]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.dynamic]
+version = {attr = "wtf_tinymce._version.__version__"} 
