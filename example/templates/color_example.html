@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WTF-TinyMCE Color Example</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .container {
+        max-width: 800px;
+        margin-top: 2rem;
+      }
+      .flash-messages {
+        margin: 1rem 0;
+      }
+      .content-preview {
+        margin-top: 2rem;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .tox-tinymce.active {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mb-4">WTF-TinyMCE Color Example</h1>
+
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="flash-messages">
+        {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0">Example Form with Text Colors</h2>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {{ form.csrf_token }}
+
+            <div class="mb-3">
+              {{ form.welcome_text.label(class="form-label") }} {{
+              form.welcome_text(class="form-control") }}
+              <div class="form-text">
+                Try using the text color and background color buttons in the
+                toolbar.
+              </div>
+            </div>
+
+            <div class="mb-3">{{ form.submit(class="btn btn-primary") }}</div>
+          </form>
+        </div>
+      </div>
+
+      {% if submitted_content %}
+      <div class="content-preview">
+        <h3 class="h5">Submitted Content:</h3>
+        <div>{{ submitted_content|safe }}</div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% import 'wtf_tinymce/editor.html' as tinymce with context %} {{
+    tinymce.init_wtf_tinymce() }}
+  </body>
+</html>

@@ -1,7 +1,12 @@
 # Include the license file
 include LICENSE
-# Include the readme file
+# Include the readme files
 include README.md
+include README.rst
+# Include configuration files
+include pyproject.toml
+include setup.py
+include setup.cfg
 
 # Include module
 recursive-include wtf_tinymce *

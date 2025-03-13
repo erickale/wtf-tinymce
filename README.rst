@@ -50,7 +50,7 @@ under project static folder to your custom stylesheet for editor content.
     class MyForm(Form):
         text = TinyMceField(
             'My WTF TinyMCE Field label',
-            tinymce_options={'toolbar': 'bold italic | link | code'}
+            tinymce_options={'toolbar': 'formatselect fontselect fontsizeselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | link | code'}
         )
 
 To optional parameter ``tinymce_options`` you can add any TinyMCE options
